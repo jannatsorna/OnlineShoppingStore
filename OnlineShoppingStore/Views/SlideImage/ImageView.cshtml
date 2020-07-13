@@ -1,0 +1,40 @@
+﻿@model OnlineShoppingStore.DBTables.Tbl_SlideImage
+
+@{
+    ViewBag.Title = "ImageView";
+   
+}
+
+<h2>ImageView</h2>
+
+<div>
+    <h4>Tbl_SlideImage</h4>
+    <hr />
+    @* @Html.HiddenFor(model => model.SlideId) *@
+   
+    <dl class="dl-horizontal">
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SlideTitle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SlideTitle)
+        </dd>
+
+        <dt>
+
+        </dt>
+
+        <dd>
+            <img src="@Url.Content(Model.SlideImage)" width="250" height="250" multiple />
+        </dd>
+
+    </dl>
+</div>
+
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.SlideId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

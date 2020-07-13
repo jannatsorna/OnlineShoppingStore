@@ -1,0 +1,145 @@
+﻿@model IEnumerable<OnlineShoppingStore.DBTables.Tbl_Product> 
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+@*code for slider using carousel*@
+<div id="themeSlider" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+        <li data-target="#themeSlider" data-slide-to="0" class="active"></li>
+        <li data-target="#themeSlider" data-slide-to="1"></li>
+        <li data-target="#themeSlider" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner">
+        <div class="item active">
+            <div class="imgOverlay"></div>
+            <img style="height:450px;width:150%" src="../Images/laptop_1.jpg" alt="First slide">
+            <div class="carousel-caption">
+                <h3>New</h3>
+
+            </div>
+        </div>
+        <div class="item">
+            <div class="imgOverlay"></div>
+            <img style="height:450px;width:150%" src="../Images/phn.jpg" alt="Second slide">
+            <div class="carousel-caption">
+                <h3>My Phone</h3>
+
+            </div>
+        </div>
+        <div class="item">
+            <div class="imgOverlay"></div>
+            <img style="height:450px;width:150%" src="../Images/mackbook_1.jpg" alt="Third slide">
+            <div class="carousel-caption">
+                <h3>MackBook</h3>
+
+            </div>
+        </div>
+    </div>
+    <a class="left carousel-control" href="#themeSlider" data-slide="prev">
+        <span class="fa fa-chevron-left"></span>
+    </a>
+    <a class="right carousel-control" href="#themeSlider" data-slide="next">
+        <span class="fa fa-chevron-right"></span>
+    </a>
+
+</div>
+
+@*code for search box with button*@
+
+<div class="olContent f1">
+    <h2 style="color : black">Search Product/Category</h2>
+</div>
+
+<div class="olSearch fr">
+    <input type="text" placeholder="Enter Keyword" name="searchkey" class="inputComn houseText form-control" />
+    <div class="searchIcon">
+        <button type="button" class="searchBtn" style="font-size:24px">
+
+            @*<img src="~/Images/search.jpg" />
+                <i class="fa fa-search"></i>*@
+            <i style="font-size:24px" class="fa">&#xf002;</i>
+        </button>
+    </div>
+</div>
+@*code for Heading of products*@
+<div class="row">
+    <div class="col-md-12">
+        <div>
+            <h2>Our Products <small>trends products</small></h2>
+        </div>
+    </div>
+
+</div>
+
+@*code for add images of products*@
+
+<div class="row product-container">  
+    @foreach (var item in Model)
+    {
+        <div class="col-md-3 col-sm-3 col-xs-6" style="margin-bottom : 8px">
+            <div class="thumbnail product-item" style="height:300px">
+                <a href="@Url.Action("ProductDetails", "HomePgProductDetails", new { id=item.ProductId}) ">
+                    <img class="img-responsive" title="Click to View Product Detail"
+                         style="cursor : pointer;height:160px;width : 100% "
+                         src="@Url.Content(item.ProductImage)" />
+                    </a>
+                    <div class="caption">
+                        <h5>@item.ProductName</h5>
+                        <p>@item.Price Tk</p>
+                        <p>
+                            @if (item.Quantity > 0)
+                            {
+                                @*using (Html.BeginForm("AddToCart", "Home", new { productId = item.ProductId, url = "Index" }, FormMethod.Post))
+                    {
+                        <button type="submit" class="pull-right"><i class="fa fa-shopping-cart"></i></button>
+                    }*@
+                            <p>Available</p>
+                        }
+                        else
+                        {
+                            <p>Not Available</p>
+                        }
+
+                            </p>
+                            <div class="product-item-badge">
+                                @if (item.IsFeatured == true)
+                                {
+                                    <p>New</p>
+
+                                }
+                                else
+                                {
+                                    <p>Old</p>
+                                }
+                            </div>
+
+                        </div>
+</div>
+            </div>
+        }
+</div>
+
+
+
+
+        @*<div class="row product-container">
+            <div class="col-md-3 col-sm-3 col-xs-6" style="margin-bottom : 8px">
+                <div class="thumbnail product-item" style="height:300px">
+                    <img class="img-responsive" title="Click to View Product Detail"
+                         style="cursor : pointer;height:160px;width : 100% "
+                         src="~/Images/phn.jpg" />
+
+                    <div class="caption">
+                        <h5>Product Name</h5>
+                        <p>72900.00 Tk</p>
+                        <p>Available</p>
+                        <div class="product-item-badge">New </div>
+                    </div>
+                </div>
+
+            </div>*@
+
+   
+
