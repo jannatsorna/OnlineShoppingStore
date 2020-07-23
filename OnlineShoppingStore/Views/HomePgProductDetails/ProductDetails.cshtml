@@ -1,17 +1,82 @@
 ﻿@model OnlineShoppingStore.DBTables.Tbl_Product
 
 @{
-   // ViewBag.Title = "ProductDetails";
+    // ViewBag.Title = "ProductDetails";
     //Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"> @*for box *@
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" /> @*addaed*@
+    <link href="~/Content/MainLayout.css" rel="stylesheet" /> @*addaed*@
+    @Scripts.Render("~/bundles/modernizr") @*addaed*@
+</head>
+<body>
+    <hr />
+    <div class="container">
+
+        <div class="card" style="width:400px">
+            @*<img class="card-img-top" src="img_avatar1.png" alt="Card image" style="width:100%">*@
+            <div class="card-body">
+
+                <dl class="card-body">
+                    <dt>
+
+                    </dt>
+
+                    <dd>
+                        <img class="card-img-top" src="@Url.Content(Model.ProductImage)" alt="Card image" style="width:100%" />
+                    </dd>
+
+                    <dd>
+                        <h5><strong>@Html.DisplayFor(model => model.ProductName) </strong></h5>
+
+                    </dd>
+
+                    <dd>
+                        <h4 class="price" style="color:red">৳ @Html.DisplayFor(model => model.Price)</h4>
+                    </dd>
+
+                    <dd>
+                        <p>@Html.DisplayFor(model => model.Description)</p>
+                    </dd>
+                </dl>
+
+                <a href="#" class="btn btn-dark stretched-link">ADD TO CART</a>
+                <a href="#" class="btn btn-danger stretched-link">BUY NOW</a>
+                
 
 
+            </div>
+        </div>
+    </div>
 
-<div>
-    
+    @*<div class="container">
+            <hr />
+            <div class="card" style="width:600px">
+                <div class="body-content">
+                    <p>Details</p>
+                </div>
+            </div>
+        </div>*@
+
+</body>
+</html>
+
+
+@*<div>
+
     <hr />
     <dl class="dl-horizontal">
-        
+
 
         <dt>
             @Html.DisplayNameFor(model => model.ProductName)
@@ -30,7 +95,7 @@
         </dd>
 
         <dt>
-            
+
         </dt>
 
         <dd>
@@ -47,8 +112,8 @@
         </dd>
 
     </dl>
-</div>
+</div>*@
 <p>
-    @Html.ActionLink(" ", " ", new { id = Model.ProductId }) |
+    @Html.ActionLink(" ", " ", new { id = Model.ProductId }) 
     @*@Html.ActionLink("Back to List", "Index")*@
 </p>
